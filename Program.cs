@@ -3,6 +3,7 @@ using Sep2026.ElectronicShop;
 using System.Linq.Expressions;
 
 Console.WriteLine("Electronic Mall");
+
 ItemsCreateService service = new ItemsCreateService();
   
 Start:
@@ -14,24 +15,19 @@ Start:
             Console.WriteLine("5.Exit");
             Console.Write("Choose Option: ");
             Console.WriteLine();
-
-            if (!int.TryParse(Console.ReadLine(), out int choice))
-            {
-                Console.WriteLine("Please enter a valid number!");
-                goto Start;
-            }
+            string choice = Console.ReadLine();
 
             switch (choice)
             {
-                case 1:
+                case "1":
                     Console.Write("Enter Product Name: ");
-                    string name = Console.ReadLine() ?? "";
+                    string name = Console.ReadLine() ?? "ီDefault Name";
 
                     Console.Write("Enter Brand Name: ");
-                    string brand = Console.ReadLine() ?? "";
+                    string brand = Console.ReadLine() ?? "Default brand";
 
                     Console.Write("Enter Model Number: ");
-                    string model = Console.ReadLine() ?? "";
+                    string model = Console.ReadLine() ?? "Default model";
 
                     Console.Write("Enter Purchase Price: ");
                     if (!decimal.TryParse(Console.ReadLine(), out decimal purprice))
@@ -56,23 +52,23 @@ Start:
                     service.ItemCreate(name,brand,model,purprice,saleprice,quantity);
                     goto Start;
 
-                case 2:
+                case "2":
                     service.ShowItem();
                     goto Start;
 
 
-                case 3:
+                case "3":
                     Console.Write("Enter Product Name: ");
-                    string searchName = Console.ReadLine() ?? "";
+                    string searchName = Console.ReadLine();
                     service.SearchItem(searchName);
 
                     goto Start;
 
-                case 4:
+                case "4":
                     service.CalculateInventoryValue();
                     goto Start;
 
-                case 5:
+                case "5":
 
                     return;
 
